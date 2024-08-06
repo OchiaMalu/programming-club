@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     username: root
-    password: 123456
+    password: WwOIJgrLxM+gCApKBGPqvTVR4b/8AURcIeQjl1KUX2PSikT4jQIwJ5plhuLdze/bGFOKLvdT4lgs/v8eBYvJoQ==
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/pro_club?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
     type: com.alibaba.druid.pool.DruidDataSource
@@ -24,3 +24,7 @@ spring:
           log-slow-sql: true
         wall:
           enabled: true
+        config:
+          enabled: true
+      connection-properties: config.decrypt=true;config.decrypt.key=${publicKey};
+publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJIPyPcvOGakebMIkOfQCmO9Idms4ta5Y7ZmU5NEpGKj/Lpxaqv6UNGceXOzkX7/KtUyA9E+EttJAMkkRO6yLfUCAwEAAQ==
