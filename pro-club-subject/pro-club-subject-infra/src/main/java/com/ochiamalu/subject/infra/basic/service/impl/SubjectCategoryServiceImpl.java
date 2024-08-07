@@ -6,6 +6,9 @@ import com.ochiamalu.subject.infra.basic.service.SubjectCategoryService;
 import com.ochiamalu.subject.infra.basic.mapper.SubjectCategoryMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 /**
 * @author OchiaMalu
 * @description 针对表【subject_category(题目分类)】的数据库操作Service实现
@@ -15,6 +18,10 @@ import org.springframework.stereotype.Service;
 public class SubjectCategoryServiceImpl extends ServiceImpl<SubjectCategoryMapper, SubjectCategory>
     implements SubjectCategoryService{
 
+    @Override
+    public List<SubjectCategory> queryPrimaryCategory() {
+        return lambdaQuery().eq(SubjectCategory::getParentId, 0).list();
+    }
 }
 
 

@@ -5,12 +5,14 @@ import com.ochiamalu.subject.application.dto.SubjectCategoryDTO;
 import com.ochiamalu.subject.common.entity.Result;
 import com.ochiamalu.subject.domain.entity.SubjectCategoryBO;
 import com.ochiamalu.subject.domain.service.SubjectCategoryDomainService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/subject/category")
@@ -29,5 +31,13 @@ public class SubjectCategoryController {
         } else {
             return Result.fail();
         }
+    }
+
+    @GetMapping("/queryPrimaryCategory")
+    public Result<List<SubjectCategoryDTO>> queryPrimaryCategory() {
+        List<SubjectCategoryBO> subjectCategoryBOList = subjectCategoryDomainService.queryPrimaryCategory();
+        List<SubjectCategoryDTO> subjectCategoryDTOList = SubjectCategoryDTOConverter.INSTANCE
+                .convertBOList2DTO(subjectCategoryBOList);
+        return Result.ok(subjectCategoryDTOList);
     }
 }
