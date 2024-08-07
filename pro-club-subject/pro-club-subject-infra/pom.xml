@@ -12,6 +12,11 @@
     <artifactId>pro-club-subject-infra</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.ochiamalu</groupId>
+            <artifactId>pro-club-subject-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!-- jdbc -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,11 +40,6 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.5.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
         </dependency>
     </dependencies>
 </project>
