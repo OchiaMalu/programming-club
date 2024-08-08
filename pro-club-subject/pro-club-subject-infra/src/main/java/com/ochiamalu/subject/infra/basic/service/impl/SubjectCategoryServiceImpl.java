@@ -2,11 +2,10 @@ package com.ochiamalu.subject.infra.basic.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.ochiamalu.subject.infra.basic.entity.SubjectCategory;
-import com.ochiamalu.subject.infra.basic.service.SubjectCategoryService;
 import com.ochiamalu.subject.infra.basic.mapper.SubjectCategoryMapper;
+import com.ochiamalu.subject.infra.basic.service.SubjectCategoryService;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,6 +20,11 @@ public class SubjectCategoryServiceImpl extends ServiceImpl<SubjectCategoryMappe
     @Override
     public List<SubjectCategory> queryPrimaryCategory() {
         return lambdaQuery().eq(SubjectCategory::getParentId, 0).list();
+    }
+
+    @Override
+    public List<SubjectCategory> queryCategoryByPrimary(Long id) {
+        return lambdaQuery().eq(SubjectCategory::getParentId, id).list();
     }
 }
 

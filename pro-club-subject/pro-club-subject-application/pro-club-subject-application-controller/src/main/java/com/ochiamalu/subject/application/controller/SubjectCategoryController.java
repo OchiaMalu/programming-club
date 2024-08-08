@@ -1,5 +1,6 @@
 package com.ochiamalu.subject.application.controller;
 
+import com.google.common.base.Preconditions;
 import com.ochiamalu.subject.application.convert.SubjectCategoryDTOConverter;
 import com.ochiamalu.subject.application.dto.SubjectCategoryDTO;
 import com.ochiamalu.subject.common.entity.Result;
@@ -36,6 +37,18 @@ public class SubjectCategoryController {
     @GetMapping("/queryPrimaryCategory")
     public Result<List<SubjectCategoryDTO>> queryPrimaryCategory() {
         List<SubjectCategoryBO> subjectCategoryBOList = subjectCategoryDomainService.queryPrimaryCategory();
+        List<SubjectCategoryDTO> subjectCategoryDTOList = SubjectCategoryDTOConverter.INSTANCE
+                .convertBOList2DTO(subjectCategoryBOList);
+        return Result.ok(subjectCategoryDTOList);
+    }
+
+    @GetMapping("/queryCategoryByPrimary")
+    public Result<List<SubjectCategoryDTO>> queryCategoryByPrimary(@RequestBody SubjectCategoryDTO subjectCategoryDTO) {
+        Preconditions.checkNotNull(subjectCategoryDTO.getParentId(), "分类ID不能为空");
+        SubjectCategoryBO subjectCategoryBO = SubjectCategoryDTOConverter.INSTANCE
+                .convertDTO2BO(subjectCategoryDTO);
+        List<SubjectCategoryBO> subjectCategoryBOList = subjectCategoryDomainService
+                .queryCategoryByPrimary(subjectCategoryBO.getParentId());
         List<SubjectCategoryDTO> subjectCategoryDTOList = SubjectCategoryDTOConverter.INSTANCE
                 .convertBOList2DTO(subjectCategoryBOList);
         return Result.ok(subjectCategoryDTOList);

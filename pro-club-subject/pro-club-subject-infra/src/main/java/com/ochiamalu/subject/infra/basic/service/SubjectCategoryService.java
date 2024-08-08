@@ -1,7 +1,7 @@
 package com.ochiamalu.subject.infra.basic.service;
 
-import com.ochiamalu.subject.infra.basic.entity.SubjectCategory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ochiamalu.subject.infra.basic.entity.SubjectCategory;
 
 import java.util.List;
 
@@ -16,4 +16,9 @@ public interface SubjectCategoryService extends IService<SubjectCategory> {
      * 查询岗位大类
      */
     List<SubjectCategory> queryPrimaryCategory();
+
+    /**
+     * 查询岗位大类下分类
+     */
+    List<SubjectCategory> queryCategoryByPrimary(Long id);
 }

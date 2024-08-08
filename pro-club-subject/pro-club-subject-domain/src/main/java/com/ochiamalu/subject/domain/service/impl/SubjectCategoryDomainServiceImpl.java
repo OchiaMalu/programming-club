@@ -8,7 +8,6 @@ import com.ochiamalu.subject.infra.basic.service.SubjectCategoryService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -27,6 +26,13 @@ public class SubjectCategoryDomainServiceImpl implements SubjectCategoryDomainSe
     @Override
     public List<SubjectCategoryBO> queryPrimaryCategory() {
         List<SubjectCategory> subjectCategoryList = subjectCategoryService.queryPrimaryCategory();
+        return SubjectCategoryConverter.INSTANCE
+                .convertCategoryList2BO(subjectCategoryList);
+    }
+
+    @Override
+    public List<SubjectCategoryBO> queryCategoryByPrimary(Long id) {
+        List<SubjectCategory> subjectCategoryList = subjectCategoryService.queryCategoryByPrimary(id);
         return SubjectCategoryConverter.INSTANCE
                 .convertCategoryList2BO(subjectCategoryList);
     }
