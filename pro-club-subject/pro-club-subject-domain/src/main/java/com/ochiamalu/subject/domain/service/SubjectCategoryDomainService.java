@@ -16,4 +16,14 @@ public interface SubjectCategoryDomainService {
      * 查询岗位大类下的分类
      */
     List<SubjectCategoryBO> queryCategoryByPrimary(Long id);
+
+    /**
+     * 更新分类
+     */
+    Boolean update(SubjectCategoryBO subjectCategoryBO);
+
+    /**
+     * 删除分类
+     */
+    Boolean delete(SubjectCategoryBO subjectCategoryBO);
 }

@@ -36,4 +36,18 @@ public class SubjectCategoryDomainServiceImpl implements SubjectCategoryDomainSe
         return SubjectCategoryConverter.INSTANCE
                 .convertCategoryList2BO(subjectCategoryList);
     }
+
+    @Override
+    public Boolean update(SubjectCategoryBO subjectCategoryBO) {
+        SubjectCategory subjectCategory = SubjectCategoryConverter.INSTANCE
+                .convertBO2Category(subjectCategoryBO);
+        return subjectCategoryService.updateById(subjectCategory);
+    }
+
+    @Override
+    public Boolean delete(SubjectCategoryBO subjectCategoryBO) {
+        SubjectCategory subjectCategory = SubjectCategoryConverter.INSTANCE
+                .convertBO2Category(subjectCategoryBO);
+        return subjectCategoryService.removeById(subjectCategory);
+    }
 }
