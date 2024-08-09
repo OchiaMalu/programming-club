@@ -11,12 +11,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 题目标签表
- * @TableName subject_label
+ * 题目信息表
+ * @TableName subject_info
  */
-@TableName(value ="subject_label")
+@TableName(value ="subject_info")
 @Data
-public class SubjectLabel implements Serializable {
+public class SubjectInfo implements Serializable {
     /**
      * 主键
      */
@@ -24,19 +24,34 @@ public class SubjectLabel implements Serializable {
     private Long id;
 
     /**
-     * 标签分类
+     * 题目名称
      */
-    private String labelName;
+    private String subjectName;
 
     /**
-     * 排序
+     * 题目难度
      */
-    private Integer sortNum;
+    private Integer subjectDifficult;
 
     /**
-     * 分类ID
+     * 出题人名
      */
-    private String categoryId;
+    private String settleName;
+
+    /**
+     * 题目类型 1单选 2多选 3判断 4简答
+     */
+    private Integer subjectType;
+
+    /**
+     * 题目分数
+     */
+    private Integer subjectScore;
+
+    /**
+     * 题目解析
+     */
+    private String subjectParse;
 
     /**
      * 创建人
@@ -49,12 +64,12 @@ public class SubjectLabel implements Serializable {
     private Date createdTime;
 
     /**
-     * 更新人
+     * 修改人
      */
     private String updateBy;
 
     /**
-     * 更新时间
+     * 修改时间
      */
     private Date updateTime;
 

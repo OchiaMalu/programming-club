@@ -11,12 +11,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 题目标签表
- * @TableName subject_label
+ * 单选题信息表
+ * @TableName subject_radio
  */
-@TableName(value ="subject_label")
+@TableName(value ="subject_radio")
 @Data
-public class SubjectLabel implements Serializable {
+public class SubjectRadio implements Serializable {
     /**
      * 主键
      */
@@ -24,19 +24,24 @@ public class SubjectLabel implements Serializable {
     private Long id;
 
     /**
-     * 标签分类
+     * 题目id
      */
-    private String labelName;
+    private Long subjectId;
 
     /**
-     * 排序
+     * a,b,c,d
      */
-    private Integer sortNum;
+    private Integer optionType;
 
     /**
-     * 分类ID
+     * 选项内容
      */
-    private String categoryId;
+    private String optionContent;
+
+    /**
+     * 是否正确
+     */
+    private Integer isCorrect;
 
     /**
      * 创建人
@@ -49,12 +54,12 @@ public class SubjectLabel implements Serializable {
     private Date createdTime;
 
     /**
-     * 更新人
+     * 修改人
      */
     private String updateBy;
 
     /**
-     * 更新时间
+     * 修改时间
      */
     private Date updateTime;
 

@@ -11,12 +11,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 题目标签表
- * @TableName subject_label
+ * 判断题
+ * @TableName subject_judge
  */
-@TableName(value ="subject_label")
+@TableName(value ="subject_judge")
 @Data
-public class SubjectLabel implements Serializable {
+public class SubjectJudge implements Serializable {
     /**
      * 主键
      */
@@ -24,19 +24,14 @@ public class SubjectLabel implements Serializable {
     private Long id;
 
     /**
-     * 标签分类
+     * 题目id
      */
-    private String labelName;
+    private Long subjectId;
 
     /**
-     * 排序
+     * 是否正确
      */
-    private Integer sortNum;
-
-    /**
-     * 分类ID
-     */
-    private String categoryId;
+    private Integer isCorrect;
 
     /**
      * 创建人
