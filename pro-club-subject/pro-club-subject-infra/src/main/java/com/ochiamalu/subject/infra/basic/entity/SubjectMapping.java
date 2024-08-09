@@ -11,12 +11,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 简答题
- * @TableName subject_brief
+ * 题目分类关系表
+ * @TableName subject_mapping
  */
-@TableName(value ="subject_brief")
+@TableName(value ="subject_mapping")
 @Data
-public class SubjectBrief implements Serializable {
+public class SubjectMapping implements Serializable {
     /**
      * 主键
      */
@@ -29,9 +29,14 @@ public class SubjectBrief implements Serializable {
     private Long subjectId;
 
     /**
-     * 题目答案
+     * 分类id
      */
-    private String subjectAnswer;
+    private Long categoryId;
+
+    /**
+     * 标签id
+     */
+    private Long labelId;
 
     /**
      * 创建人
@@ -44,12 +49,12 @@ public class SubjectBrief implements Serializable {
     private Date createdTime;
 
     /**
-     * 更新人
+     * 修改人
      */
     private String updateBy;
 
     /**
-     * 更新时间
+     * 修改时间
      */
     private Date updateTime;
 
@@ -61,5 +66,4 @@ public class SubjectBrief implements Serializable {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
-
 }
