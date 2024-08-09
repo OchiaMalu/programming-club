@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace=".mapper.SubjectMappingMapper">
+<mapper namespace="com.ochiamalu.subject.infra.basic.mapper.SubjectMappingMapper">
 
-    <resultMap id="BaseResultMap" type=".entity.SubjectMapping">
+    <resultMap id="BaseResultMap" type="com.ochiamalu.subject.infra.basic.entity.SubjectMapping">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="subjectId" column="subject_id" jdbcType="BIGINT"/>
             <result property="categoryId" column="category_id" jdbcType="BIGINT"/>
