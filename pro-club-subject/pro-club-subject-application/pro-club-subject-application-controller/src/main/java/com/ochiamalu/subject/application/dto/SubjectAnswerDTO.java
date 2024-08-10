@@ -1,5 +1,7 @@
 package com.ochiamalu.subject.application.dto;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,7 @@ import java.io.Serializable;
  * @author OchiaMalu
  * @date 2024/08/09
  */
+@Data
 public class SubjectAnswerDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 

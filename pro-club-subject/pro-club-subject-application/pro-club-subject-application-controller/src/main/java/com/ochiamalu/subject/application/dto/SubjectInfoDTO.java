@@ -3,8 +3,11 @@ package com.ochiamalu.subject.application.dto;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.ochiamalu.subject.common.entity.PageInfo;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,8 +16,9 @@ import java.util.List;
  * @author OchiaMalu
  * @date 2024/08/09
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class SubjectInfoDTO {
+public class SubjectInfoDTO extends PageInfo implements Serializable {
     /**
      * 主键
      */
@@ -73,4 +77,10 @@ public class SubjectInfoDTO {
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
+
+    private Long categoryId;
+
+    private Long labelId;
+
+    private List<String> labelName;
 }

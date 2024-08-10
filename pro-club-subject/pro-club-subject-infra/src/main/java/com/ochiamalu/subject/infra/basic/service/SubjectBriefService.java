@@ -10,4 +10,5 @@ import com.ochiamalu.subject.infra.basic.entity.SubjectBrief;
 */
 public interface SubjectBriefService extends IService<SubjectBrief> {
 
+    SubjectBrief queryByConditions(SubjectBrief subjectBrief);
 }

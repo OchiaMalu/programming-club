@@ -3,6 +3,8 @@ package com.ochiamalu.subject.infra.basic.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ochiamalu.subject.infra.basic.entity.SubjectRadio;
 
+import java.util.List;
+
 /**
 * @author OchiaMalu
 * @description 针对表【subject_radio(单选题信息表)】的数据库操作Service
@@ -10,4 +12,5 @@ import com.ochiamalu.subject.infra.basic.entity.SubjectRadio;
 */
 public interface SubjectRadioService extends IService<SubjectRadio> {
 
+    List<SubjectRadio> queryByConditions(SubjectRadio subjectRadio);
 }

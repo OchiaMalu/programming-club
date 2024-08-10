@@ -3,6 +3,8 @@ package com.ochiamalu.subject.infra.basic.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ochiamalu.subject.infra.basic.entity.SubjectJudge;
 
+import java.util.List;
+
 /**
 * @author OchiaMalu
 * @description 针对表【subject_judge(判断题)】的数据库操作Service
@@ -10,4 +12,5 @@ import com.ochiamalu.subject.infra.basic.entity.SubjectJudge;
 */
 public interface SubjectJudgeService extends IService<SubjectJudge> {
 
+    List<SubjectJudge> queryByConditions(SubjectJudge subjectJudge);
 }

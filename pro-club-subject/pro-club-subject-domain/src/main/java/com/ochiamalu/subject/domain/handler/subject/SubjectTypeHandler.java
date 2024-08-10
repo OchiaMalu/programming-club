@@ -2,6 +2,7 @@ package com.ochiamalu.subject.domain.handler.subject;
 
 import com.ochiamalu.subject.common.enums.SubjectInfoTypreEnum;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
+import com.ochiamalu.subject.domain.entity.SubjectOptionBO;
 
 public interface SubjectTypeHandler {
 
@@ -14,4 +15,9 @@ public interface SubjectTypeHandler {
      * 题目插入
      */
     void add(SubjectInfoBO subjectInfoBO);
+
+    /**
+     * 题目查询
+     */
+    SubjectOptionBO query(Long subjectId);
 }

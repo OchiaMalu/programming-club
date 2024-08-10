@@ -6,6 +6,9 @@ import com.ochiamalu.subject.infra.basic.mapper.SubjectRadioMapper;
 import com.ochiamalu.subject.infra.basic.service.SubjectRadioService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
 * @author OchiaMalu
 * @description 针对表【subject_radio(单选题信息表)】的数据库操作Service实现
@@ -15,6 +18,13 @@ import org.springframework.stereotype.Service;
 public class SubjectRadioServiceImpl extends ServiceImpl<SubjectRadioMapper, SubjectRadio>
     implements SubjectRadioService {
 
+    @Resource
+    private SubjectRadioMapper subjectRadioMapper;
+
+    @Override
+    public List<SubjectRadio> queryByConditions(SubjectRadio subjectRadio) {
+        return subjectRadioMapper.selectByConditions(subjectRadio);
+    }
 }
 
 

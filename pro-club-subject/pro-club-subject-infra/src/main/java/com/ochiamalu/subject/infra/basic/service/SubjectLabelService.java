@@ -13,4 +13,6 @@ import java.util.List;
 public interface SubjectLabelService extends IService<SubjectLabel> {
 
     List<SubjectLabel> queryLabelByCategoryId(String categoryId);
+
+    List<SubjectLabel> batchQueryById(List<Long> labelIds);
 }

@@ -3,16 +3,13 @@ package com.ochiamalu.subject.application.dto;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 
 /**
- * 题目分类
- * @TableName subject_category
+ * 题目分类dto
  */
-@TableName(value ="subject_category")
 @Data
 public class SubjectCategoryDTO implements Serializable {
     /**

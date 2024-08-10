@@ -12,6 +12,7 @@ import com.ochiamalu.subject.infra.basic.entity.SubjectBrief;
  */
 public interface SubjectBriefMapper extends BaseMapper<SubjectBrief> {
 
+    SubjectBrief selectByConditions(SubjectBrief subjectBrief);
 }
 
 

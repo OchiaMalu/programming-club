@@ -5,10 +5,13 @@ import com.ochiamalu.subject.infra.basic.entity.SubjectMultiple;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface MultipleSubjectConverter {
+    MultipleSubjectConverter INSTANCE= Mappers.getMapper(MultipleSubjectConverter.class);
 
-    MultipleSubjectConverter INSTANCE = Mappers.getMapper(MultipleSubjectConverter.class);
+    List<SubjectAnswerBO> convertEntityToBoList(List<SubjectMultiple> result);
 
-    SubjectMultiple convertBO2Multiple(SubjectAnswerBO subjectAnswerBO);
+    SubjectMultiple convertBoToEntity(SubjectAnswerBO option);
 }
