@@ -17,7 +17,7 @@ import javax.annotation.Resource;
  * @date 2024/08/09
  */
 @Component
-public class BriefTypeHandler implements SubjectTypeHandler{
+public class BriefTypeHandler implements SubjectTypeHandler {
 
     @Resource
     private SubjectBriefService subjectBriefService;
@@ -31,6 +31,7 @@ public class BriefTypeHandler implements SubjectTypeHandler{
     public void add(SubjectInfoBO subjectInfoBO) {
         SubjectBrief subjectBrief = BriefSubjectConverter.INSTANCE
                 .convertBO2Brief(subjectInfoBO);
+        subjectBrief.setId(null);
         subjectBrief.setSubjectId(subjectInfoBO.getId());
         subjectBriefService.save(subjectBrief);
     }
