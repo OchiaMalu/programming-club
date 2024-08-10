@@ -10,12 +10,13 @@
     </parent>
 
     <artifactId>pro-club-subject-application</artifactId>
+
     <packaging>pom</packaging>
+
     <modules>
         <module>pro-club-subject-application-controller</module>
         <module>pro-club-subject-application-job</module>
         <module>pro-club-subject-application-mq</module>
     </modules>
-
 
 </project>
