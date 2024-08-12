@@ -8,5 +8,11 @@ spring:
           uri: lb://pro-club-oss
           predicates:
             - Path=/oss/**
-          filters:
-            - StripPrefix=1
+        - id: auth
+          uri: lb://pro-club-auth
+          predicates:
+            - Path=/auth/**
+        - id: subject
+          uri: lb://pro-club-subject
+          predicates:
+            - Path=/subject/**
