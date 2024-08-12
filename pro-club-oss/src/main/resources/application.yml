@@ -1,9 +1,2 @@
 server:
   port: 4000
-minio:
-  url: http://localhost:9000
-  accessKey: minio
-  secretKey: minio
-storage:
-  service:
-    type: minio

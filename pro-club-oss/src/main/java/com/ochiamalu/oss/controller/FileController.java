@@ -1,6 +1,7 @@
 package com.ochiamalu.oss.controller;
 
 import com.ochiamalu.oss.service.FileService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -17,4 +18,8 @@ public class FileController {
     @Resource
     private FileService fileService;
 
+    @GetMapping("/getAllName")
+    public String getAllName(){
+        return fileService.getUrl("","");
+    }
 }
