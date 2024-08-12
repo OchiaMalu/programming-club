@@ -25,5 +25,5 @@ public class SubjectLabelDTO {
     /**
      * 分类ID
      */
-    private String categoryId;
+    private Long categoryId;
 }

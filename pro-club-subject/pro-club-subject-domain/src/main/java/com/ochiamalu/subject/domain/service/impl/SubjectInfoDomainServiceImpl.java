@@ -74,7 +74,7 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
                 , subjectInfoBO.getLabelId(), start, subjectInfoBO.getPageSize());
         List<SubjectInfoBO> subjectInfoBOList = SubjectInfoConverter.INSTANCE.convertInfo2BOList(subjectInfoList);
         subjectInfoBOList.forEach(info -> {
-            List<SubjectMapping> mappingList = subjectMappingService.queryLabelId(info.getId());
+            List<SubjectMapping> mappingList = subjectMappingService.queryBySubjectId(info.getId());
             getLabelName(info, mappingList);
         });
         pageResult.setRecords(subjectInfoBOList);
@@ -89,7 +89,7 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
                 .getSubjectTypeHandler(subjectInfo.getSubjectType());
         SubjectOptionBO optionBO = handler.query(subjectInfo.getId());
         SubjectInfoBO bo = SubjectInfoConverter.INSTANCE.convertOptionAndInfoToBo(optionBO, subjectInfo);
-        List<SubjectMapping> mappingList = subjectMappingService.queryLabelId(subjectInfo.getId());
+        List<SubjectMapping> mappingList = subjectMappingService.queryBySubjectId(subjectInfo.getId());
         getLabelName(bo, mappingList);
         return bo;
     }

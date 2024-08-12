@@ -18,8 +18,13 @@ public class SubjectMappingServiceImpl extends ServiceImpl<SubjectMappingMapper,
         implements SubjectMappingService {
 
     @Override
-    public List<SubjectMapping> queryLabelId(Long subjectId) {
+    public List<SubjectMapping> queryBySubjectId(Long subjectId) {
         return lambdaQuery().eq(SubjectMapping::getSubjectId, subjectId).list();
+    }
+
+    @Override
+    public List<SubjectMapping> queryByCategoryId(Long categoryId) {
+        return lambdaQuery().eq(SubjectMapping::getCategoryId, categoryId).list();
     }
 }
 

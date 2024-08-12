@@ -11,5 +11,5 @@ public interface SubjectLabelDomainService {
 
     Boolean delete(SubjectLabelBO subjectLabelBO);
 
-    List<SubjectLabelBO> queryLabelByCategoryId(String categoryId);
+    List<SubjectLabelBO> queryLabelByCategoryId(Long categoryId);
 }

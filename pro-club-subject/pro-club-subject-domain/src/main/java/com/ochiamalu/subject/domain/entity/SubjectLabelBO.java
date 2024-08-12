@@ -25,5 +25,5 @@ public class SubjectLabelBO {
     /**
      * 分类ID
      */
-    private String categoryId;
+    private Long categoryId;
 }
