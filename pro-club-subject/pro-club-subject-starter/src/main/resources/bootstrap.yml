@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: pro-club-subject
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 139.159.143.94:8848
+        prefix: ${spring.application.name}
+        group: DEFAULT_GROUP
+        namespace:
+        file-extension: yaml
+      discovery:
+        server-addr: 139.159.143.94:8848
+        enabled: true
