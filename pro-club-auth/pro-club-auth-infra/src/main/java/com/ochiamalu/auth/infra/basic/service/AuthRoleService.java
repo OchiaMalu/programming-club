@@ -10,4 +10,5 @@ import com.ochiamalu.auth.infra.basic.entity.AuthRole;
 */
 public interface AuthRoleService extends IService<AuthRole> {
 
+    AuthRole queryByRoleKey(String roleKey);
 }
