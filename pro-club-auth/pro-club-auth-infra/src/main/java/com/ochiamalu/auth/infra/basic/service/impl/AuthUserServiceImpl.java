@@ -15,6 +15,12 @@ import org.springframework.stereotype.Service;
 public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser>
         implements AuthUserService {
 
+    @Override
+    public Boolean changeStatus(AuthUser authUser) {
+        return lambdaUpdate().eq(AuthUser::getId, authUser.getId())
+                .set(AuthUser::getStatus, authUser.getStatus())
+                .update();
+    }
 }
 
 

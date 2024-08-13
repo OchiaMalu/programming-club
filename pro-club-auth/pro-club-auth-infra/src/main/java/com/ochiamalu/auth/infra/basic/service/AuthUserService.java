@@ -10,4 +10,5 @@ import com.ochiamalu.auth.infra.basic.entity.AuthUser;
 */
 public interface AuthUserService extends IService<AuthUser> {
 
+    Boolean changeStatus(AuthUser authUser);
 }
