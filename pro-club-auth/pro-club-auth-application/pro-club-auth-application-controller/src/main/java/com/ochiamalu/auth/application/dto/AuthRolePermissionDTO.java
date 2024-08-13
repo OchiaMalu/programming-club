@@ -3,6 +3,7 @@ package com.ochiamalu.auth.application.dto;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -27,5 +28,10 @@ public class AuthRolePermissionDTO implements Serializable {
      * 权限id
      */
     private Long permissionId;
+
+    /**
+     * 权限id列表
+     */
+    private List<Long> permissionIdList;
 
 }

@@ -3,6 +3,7 @@ package com.ochiamalu.auth.domain.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 /**
@@ -28,4 +29,8 @@ public class AuthRolePermissionBO implements Serializable {
      */
     private Long permissionId;
 
+    /**
+     * 权限id列表
+     */
+    private List<Long> permissionIdList;
 }
