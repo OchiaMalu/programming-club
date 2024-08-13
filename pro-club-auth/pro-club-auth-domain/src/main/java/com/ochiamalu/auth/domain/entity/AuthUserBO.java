@@ -4,6 +4,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 用户bo
+ *
+ * @author OchiaMalu
+ * @date 2024/08/13
+ */
 @Data
 public class AuthUserBO implements Serializable {
     /**

@@ -4,6 +4,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+/**
+ * 用户dto
+ *
+ * @author OchiaMalu
+ * @date 2024/08/13
+ */
 @Data
 public class AuthUserDTO implements Serializable {
 
