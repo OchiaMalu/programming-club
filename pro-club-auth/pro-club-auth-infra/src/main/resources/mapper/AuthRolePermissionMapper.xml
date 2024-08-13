@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace=".mapper.AuthRolePermissionMapper">
+<mapper namespace="com.ochiamalu.auth.infra.basic.mapper.AuthRolePermissionMapper">
 
-    <resultMap id="BaseResultMap" type=".entity.AuthRolePermission">
+    <resultMap id="BaseResultMap" type="com.ochiamalu.auth.infra.basic.entity.AuthRolePermission">
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="roleId" column="role_id" jdbcType="BIGINT"/>
             <result property="permissionId" column="permission_id" jdbcType="BIGINT"/>

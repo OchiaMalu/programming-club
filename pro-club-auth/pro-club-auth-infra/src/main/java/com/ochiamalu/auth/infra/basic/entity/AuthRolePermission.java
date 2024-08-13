@@ -1,4 +1,4 @@
-package com.ochiamalu.auth.domain.entity;
+package com.ochiamalu.auth.infra.basic.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -11,12 +11,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 
- * @TableName auth_role
+ * 角色权限关联表
+ * @TableName auth_role_permission
  */
-@TableName(value ="auth_role")
+@TableName(value ="auth_role_permission")
 @Data
-public class AuthRole implements Serializable {
+public class AuthRolePermission implements Serializable {
     /**
      * 主键
      */
@@ -24,14 +24,14 @@ public class AuthRole implements Serializable {
     private Long id;
 
     /**
-     * 角色名称
+     * 角色id
      */
-    private String roleName;
+    private Long roleId;
 
     /**
-     * 角色唯一标识
+     * 权限id
      */
-    private String roleKey;
+    private Long permissionId;
 
     /**
      * 创建人
@@ -54,7 +54,7 @@ public class AuthRole implements Serializable {
     private Date updateTime;
 
     /**
-     * 是否被删除 0未删除 1已删除
+     * 是否删除
      */
     @TableLogic
     private Integer isDeleted;

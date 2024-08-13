@@ -1,7 +1,7 @@
-package com.ochiamalu.auth.domain.mapper;
+package com.ochiamalu.auth.infra.basic.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.ochiamalu.auth.domain.entity.AuthPermission;
+import com.ochiamalu.auth.infra.basic.entity.AuthPermission;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

@@ -1,7 +1,7 @@
-package com.ochiamalu.auth.domain.service;
+package com.ochiamalu.auth.infra.basic.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.ochiamalu.auth.domain.entity.AuthPermission;
+import com.ochiamalu.auth.infra.basic.entity.AuthPermission;
 
 /**
 * @author OchiaMalu

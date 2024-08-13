@@ -1,9 +1,9 @@
-package com.ochiamalu.auth.domain.service.impl;
+package com.ochiamalu.auth.infra.basic.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.ochiamalu.auth.domain.entity.AuthPermission;
-import com.ochiamalu.auth.domain.mapper.AuthPermissionMapper;
-import com.ochiamalu.auth.domain.service.AuthPermissionService;
+import com.ochiamalu.auth.infra.basic.entity.AuthPermission;
+import com.ochiamalu.auth.infra.basic.mapper.AuthPermissionMapper;
+import com.ochiamalu.auth.infra.basic.service.AuthPermissionService;
 import org.springframework.stereotype.Service;
 
 /**
