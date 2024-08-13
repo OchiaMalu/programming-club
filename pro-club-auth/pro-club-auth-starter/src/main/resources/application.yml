@@ -27,7 +27,28 @@ spring:
         config:
           enabled: true
       connection-properties: config.decrypt=true;config.decrypt.key=${publicKey};
-publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJIPyPcvOGakebMIkOfQCmO9Idms4ta5Y7ZmU5NEpGKj/Lpxaqv6UNGceXOzkX7/KtUyA9E+EttJAMkkRO6yLfUCAwEAAQ==
+  # redis配置
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 1
+    # Redis服务器地址
+    host: localhost
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    # password:
+    # 连接超时时间
+    timeout: 10s
+    lettuce:
+      pool:
+        # 连接池最大连接数
+        max-active: 200
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+        # 连接池中的最大空闲连接
+        max-idle: 10
+        # 连接池中的最小空闲连接
+        min-idle: 0
 sa-token:
   # token 名称（同时也是 cookie 名称）
   token-name: satoken
@@ -43,3 +64,4 @@ sa-token:
   token-style: uuid
   # 是否输出操作日志
   is-log: true
+publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJIPyPcvOGakebMIkOfQCmO9Idms4ta5Y7ZmU5NEpGKj/Lpxaqv6UNGceXOzkX7/KtUyA9E+EttJAMkkRO6yLfUCAwEAAQ==
