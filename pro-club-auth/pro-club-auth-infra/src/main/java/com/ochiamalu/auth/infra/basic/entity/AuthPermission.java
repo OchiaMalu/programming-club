@@ -51,6 +51,7 @@ public class AuthPermission implements Serializable {
     /**
      * 展示状态 0展示 1隐藏
      */
+    @TableField(value = "`show`")
     private Integer show;
 
     /**
