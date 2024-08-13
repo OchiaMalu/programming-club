@@ -1,4 +1,4 @@
-package com.ochiamalu.gateway.constants;
+package com.ochiamalu.auth.domain.constants;
 
 /**
  * redis常量
