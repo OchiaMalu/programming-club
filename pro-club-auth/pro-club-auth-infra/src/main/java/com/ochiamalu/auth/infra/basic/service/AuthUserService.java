@@ -13,4 +13,6 @@ public interface AuthUserService extends IService<AuthUser> {
     Boolean changeStatus(AuthUser authUser);
 
     AuthUser queryByUsername(String openId);
+
+    AuthUser getUserInfo(String userName);
 }

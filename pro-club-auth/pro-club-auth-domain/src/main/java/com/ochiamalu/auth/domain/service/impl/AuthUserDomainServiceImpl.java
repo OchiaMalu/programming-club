@@ -124,4 +124,11 @@ public class AuthUserDomainServiceImpl implements AuthUserDomainService {
         StpUtil.login(openId);
         return true;
     }
+
+    @Override
+    public AuthUserBO getUserInfo(AuthUserBO authUserBO) {
+        AuthUser userInfo = authUserService.getUserInfo(authUserBO.getUserName());
+        return AuthUserBOConverter.INSTANCE
+                .convertEntity2BO(userInfo);
+    }
 }

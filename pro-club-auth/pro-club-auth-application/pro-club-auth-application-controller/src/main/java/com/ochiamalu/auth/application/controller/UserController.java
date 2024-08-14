@@ -40,6 +40,12 @@ public class UserController {
         return "当前会话是否登录：" + StpUtil.isLogin();
     }
 
+    @PostMapping("/logout")
+    public Result<Boolean> logout() {
+        StpUtil.logout();
+        return Result.ok(true);
+    }
+
     @PostMapping("/register")
     public Result<Boolean> register(@RequestBody AuthUserDTO authUserDTO) {
         AuthUserBO authUserBO = AuthUserDTOConverter.INSTANCE.convertDTO2BO(authUserDTO);
@@ -66,5 +72,14 @@ public class UserController {
         AuthUserBO authUserBO = AuthUserDTOConverter.INSTANCE.convertDTO2BO(authUserDTO);
         Boolean result = authUserDomainService.delete(authUserBO);
         return Result.ok(result);
+    }
+
+    @GetMapping("/getUserInfo")
+    public Result<AuthUserDTO> getUserInfo(@RequestBody AuthUserDTO authUserDTO) {
+        AuthUserBO authUserBO = AuthUserDTOConverter.INSTANCE.convertDTO2BO(authUserDTO);
+        AuthUserBO userInfo = authUserDomainService.getUserInfo(authUserBO);
+        AuthUserDTO userInfoDTO = AuthUserDTOConverter.INSTANCE
+                .convertBO2DTO(userInfo);
+        return Result.ok(userInfoDTO);
     }
 }

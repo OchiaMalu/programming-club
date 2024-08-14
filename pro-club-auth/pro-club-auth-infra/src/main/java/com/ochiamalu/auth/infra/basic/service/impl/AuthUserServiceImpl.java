@@ -24,7 +24,12 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser>
 
     @Override
     public AuthUser queryByUsername(String openId) {
-        return lambdaQuery().eq(AuthUser::getUserName,openId).one();
+        return lambdaQuery().eq(AuthUser::getUserName, openId).one();
+    }
+
+    @Override
+    public AuthUser getUserInfo(String userName) {
+        return lambdaQuery().eq(AuthUser::getUserName, userName).one();
     }
 }
 

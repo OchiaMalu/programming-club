@@ -12,4 +12,6 @@ public interface AuthUserDomainService {
     Boolean changeStatus(AuthUserBO authUserBO);
 
     Boolean doLogin(String validCode);
+
+    AuthUserBO getUserInfo(AuthUserBO authUserBO);
 }
