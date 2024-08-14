@@ -71,4 +71,15 @@ public class SubjectCategoryController {
         Boolean result = subjectCategoryDomainService.delete(subjectCategoryBO);
         return Result.ok(result);
     }
+
+    @GetMapping("/getCategoryAndLabel")
+    public Result<List<SubjectCategoryDTO>> getCategoryAndLabel(@RequestBody SubjectCategoryDTO subjectCategoryDTO) {
+        SubjectCategoryBO subjectCategoryBO = SubjectCategoryDTOConverter.INSTANCE
+                .convertDTO2BO(subjectCategoryDTO);
+        List<SubjectCategoryBO> subjectCategoryBOList = subjectCategoryDomainService
+                .queryCategoryAndLabel(subjectCategoryBO);
+        List<SubjectCategoryDTO> subjectCategoryDTOList = SubjectCategoryDTOConverter.INSTANCE
+                .convertBOList2DTO(subjectCategoryBOList);
+        return Result.ok(subjectCategoryDTOList);
+    }
 }
