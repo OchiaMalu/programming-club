@@ -1,7 +1,6 @@
 package com.ochiamalu.subject.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
@@ -39,7 +38,8 @@ public class SubjectCategoryBO implements Serializable {
      */
     private Long parentId;
 
-    @TableField(exist = false)
-    private static final long serialVersionUID = 1L;
-
+    /**
+     * 计数
+     */
+    private Integer count;
 }

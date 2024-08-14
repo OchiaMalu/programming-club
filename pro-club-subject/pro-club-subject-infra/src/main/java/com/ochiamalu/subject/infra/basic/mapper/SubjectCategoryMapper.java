@@ -1,7 +1,7 @@
 package com.ochiamalu.subject.infra.basic.mapper;
 
-import com.ochiamalu.subject.infra.basic.entity.SubjectCategory;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ochiamalu.subject.infra.basic.entity.SubjectCategory;
 
 /**
 * @author OchiaMalu
@@ -11,6 +11,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface SubjectCategoryMapper extends BaseMapper<SubjectCategory> {
 
+    Integer countCategory(Long id);
 }
 
 

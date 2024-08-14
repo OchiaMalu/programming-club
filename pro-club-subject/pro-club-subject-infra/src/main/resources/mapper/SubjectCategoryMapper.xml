@@ -23,4 +23,11 @@
         created_time,update_by,update_time,
         is_deleted
     </sql>
+    <select id="countCategory" resultType="java.lang.Integer">
+        select count(distinct subject_id)
+        from subject_mapping a,
+             subject_label b
+        where a.label_id = b.id
+          and b.category_id = #{id}
+    </select>
 </mapper>

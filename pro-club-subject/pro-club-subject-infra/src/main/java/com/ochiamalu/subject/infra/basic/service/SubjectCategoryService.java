@@ -21,4 +21,6 @@ public interface SubjectCategoryService extends IService<SubjectCategory> {
      * 查询岗位大类下分类
      */
     List<SubjectCategory> queryCategoryByPrimary(Long id);
+
+    Integer countSubject(Long id);
 }

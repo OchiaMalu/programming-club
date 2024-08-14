@@ -6,6 +6,7 @@ import com.ochiamalu.subject.infra.basic.mapper.SubjectCategoryMapper;
 import com.ochiamalu.subject.infra.basic.service.SubjectCategoryService;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,6 +18,9 @@ import java.util.List;
 public class SubjectCategoryServiceImpl extends ServiceImpl<SubjectCategoryMapper, SubjectCategory>
     implements SubjectCategoryService{
 
+    @Resource
+    private SubjectCategoryMapper subjectCategoryMapper;
+
     @Override
     public List<SubjectCategory> queryPrimaryCategory() {
         return lambdaQuery().eq(SubjectCategory::getParentId, 0).list();
@@ -25,6 +29,11 @@ public class SubjectCategoryServiceImpl extends ServiceImpl<SubjectCategoryMappe
     @Override
     public List<SubjectCategory> queryCategoryByPrimary(Long id) {
         return lambdaQuery().eq(SubjectCategory::getParentId, id).list();
+    }
+
+    @Override
+    public Integer countSubject(Long id) {
+        return subjectCategoryMapper.countCategory(id);
     }
 }
 
