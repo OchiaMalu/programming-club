@@ -1,6 +1,6 @@
 package com.ochiamalu.auth.domain.service.impl;
 
-import cn.dev33.satoken.secure.SaSecureUtil;
+import cn.dev33.satoken.stp.StpUtil;
 import com.google.gson.Gson;
 import com.ochiamalu.auth.domain.convert.AuthUserBOConverter;
 import com.ochiamalu.auth.domain.entity.AuthUserBO;
@@ -23,6 +23,7 @@ import javax.annotation.Resource;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.ochiamalu.auth.common.constants.WxChatMsgConstant.LOGIN_PREFIX;
 import static com.ochiamalu.auth.domain.constants.AuthConstant.NORMAL_USER;
 import static com.ochiamalu.auth.domain.constants.RedisConstants.AUTH_PERMISSION_PREFIX;
 import static com.ochiamalu.auth.domain.constants.RedisConstants.AUTH_ROLE_PREFIX;
@@ -60,7 +61,7 @@ public class AuthUserDomainServiceImpl implements AuthUserDomainService {
     @Transactional(rollbackFor = Exception.class)
     public Boolean register(AuthUserBO authUserBO) {
         AuthUser authUser = AuthUserBOConverter.INSTANCE.convertBO2Entity(authUserBO);
-        authUser.setPassword(SaSecureUtil.md5BySalt(authUser.getPassword(), SALT));
+//        authUser.setPassword(SaSecureUtil.md5BySalt(authUser.getPassword(), SALT));
         authUserService.save(authUser);
 
         AuthRole authRole = authRoleService.queryByRoleKey(NORMAL_USER);
@@ -103,5 +104,24 @@ public class AuthUserDomainServiceImpl implements AuthUserDomainService {
     public Boolean changeStatus(AuthUserBO authUserBO) {
         AuthUser authUser = AuthUserBOConverter.INSTANCE.convertBO2Entity(authUserBO);
         return authUserService.changeStatus(authUser);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Boolean doLogin(String validCode) {
+        String numKey = LOGIN_PREFIX + validCode;
+        String openId = stringRedisTemplate.opsForValue().get(numKey);
+        if (openId == null) {
+            return false;
+        }
+        AuthUser user = authUserService.queryByUsername(openId);
+        if (user == null) {
+            AuthUserBO authUser = new AuthUserBO();
+            authUser.setUserName(openId);
+            authUser.setNickName(openId);
+            this.register(authUser);
+        }
+        StpUtil.login(openId);
+        return true;
     }
 }

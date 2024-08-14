@@ -23,11 +23,12 @@ public class SaTokenConfig {
                 // 拦截地址
                 .addInclude("/**")
                 .addExclude("/auth/user/register")
+                .addExclude("/auth/user/login")
                 // 鉴权方法：每次访问进入
                 .setAuth(obj -> {
                     System.out.println("SaHolder.getRequest().getUrl() = " + SaHolder.getRequest().getUrl());
                     // 登录校验 -- 拦截所有路由，并排除/user/doLogin 用于开放登录
-                    SaRouter.match("/auth/user/**", "/auth/user/doLogin", r -> StpUtil.checkLogin());
+                    SaRouter.match("/auth/user/**", "/auth/user/login", r -> StpUtil.checkLogin());
                     SaRouter.match("/oss/**", r -> StpUtil.checkLogin());
                     SaRouter.match("/subject/add", r -> StpUtil.checkPermission("user:add"));
                     SaRouter.match("/subject/**", r -> StpUtil.checkLogin());

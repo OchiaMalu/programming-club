@@ -10,4 +10,6 @@ public interface AuthUserDomainService {
     Boolean delete(AuthUserBO authUserBO);
 
     Boolean changeStatus(AuthUserBO authUserBO);
+
+    Boolean doLogin(String validCode);
 }

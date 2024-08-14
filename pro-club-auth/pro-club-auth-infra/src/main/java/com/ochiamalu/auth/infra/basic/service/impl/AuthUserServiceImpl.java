@@ -21,6 +21,11 @@ public class AuthUserServiceImpl extends ServiceImpl<AuthUserMapper, AuthUser>
                 .set(AuthUser::getStatus, authUser.getStatus())
                 .update();
     }
+
+    @Override
+    public AuthUser queryByUsername(String openId) {
+        return lambdaQuery().eq(AuthUser::getUserName,openId).one();
+    }
 }
 
 
