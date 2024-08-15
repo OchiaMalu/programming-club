@@ -82,7 +82,6 @@ public class MinioStorageAdapter implements StorageAdapter {
 
     @Override
     public String getUrl(String bucket, String objectName) {
-//        return url + "/" + bucket + "/" + objectName;
-        return "minio";
+        return url + "/" + bucket + "/" + objectName;
     }
 }
