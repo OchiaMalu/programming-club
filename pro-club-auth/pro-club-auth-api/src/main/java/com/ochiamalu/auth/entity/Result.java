@@ -1,6 +1,5 @@
-package com.ochiamalu.auth.common.entity;
+package com.ochiamalu.auth.entity;
 
-import com.ochiamalu.auth.common.enums.ResultCodeEnum;
 import lombok.Data;
 
 @Data

@@ -2,9 +2,9 @@ package com.ochiamalu.auth.application.controller;
 
 import com.ochiamalu.auth.application.convert.AuthPermissionDTOConverter;
 import com.ochiamalu.auth.application.dto.AuthPermissionDTO;
-import com.ochiamalu.auth.common.entity.Result;
 import com.ochiamalu.auth.domain.entity.AuthPermissionBO;
 import com.ochiamalu.auth.domain.service.AuthPermissionDomainService;
+import com.ochiamalu.auth.entity.Result;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

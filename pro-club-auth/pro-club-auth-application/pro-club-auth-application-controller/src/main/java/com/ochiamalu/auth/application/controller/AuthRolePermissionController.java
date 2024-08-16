@@ -2,9 +2,9 @@ package com.ochiamalu.auth.application.controller;
 
 import com.ochiamalu.auth.application.convert.AuthRolePermissionDTOConverter;
 import com.ochiamalu.auth.application.dto.AuthRolePermissionDTO;
-import com.ochiamalu.auth.common.entity.Result;
 import com.ochiamalu.auth.domain.entity.AuthRolePermissionBO;
 import com.ochiamalu.auth.domain.service.AuthRolePermissionDomainService;
+import com.ochiamalu.auth.entity.Result;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

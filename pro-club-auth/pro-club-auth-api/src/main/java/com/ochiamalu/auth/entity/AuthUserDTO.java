@@ -1,4 +1,4 @@
-package com.ochiamalu.auth.application.dto;
+package com.ochiamalu.auth.entity;
 
 import lombok.Data;
 

@@ -2,9 +2,9 @@ package com.ochiamalu.auth.application.controller;
 
 import com.ochiamalu.auth.application.convert.AuthRoleDTOConverter;
 import com.ochiamalu.auth.application.dto.AuthRoleDTO;
-import com.ochiamalu.auth.common.entity.Result;
 import com.ochiamalu.auth.domain.entity.AuthRoleBO;
 import com.ochiamalu.auth.domain.service.AuthRoleDomainService;
+import com.ochiamalu.auth.entity.Result;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;

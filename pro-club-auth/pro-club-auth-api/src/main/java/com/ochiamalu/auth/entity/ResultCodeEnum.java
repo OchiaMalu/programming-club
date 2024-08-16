@@ -1,4 +1,4 @@
-package com.ochiamalu.auth.common.enums;
+package com.ochiamalu.auth.entity;
 
 import lombok.Getter;
 
