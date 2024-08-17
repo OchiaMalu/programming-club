@@ -28,3 +28,8 @@ spring:
           enabled: true
       connection-properties: config.decrypt=true;config.decrypt.key=${publicKey};
 publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJIPyPcvOGakebMIkOfQCmO9Idms4ta5Y7ZmU5NEpGKj/Lpxaqv6UNGceXOzkX7/KtUyA9E+EttJAMkkRO6yLfUCAwEAAQ==
+es:
+  cluster:
+    es-configs:
+      - name: c95501590c59
+        nodes: 139.159.143.94:9200
