@@ -14,7 +14,6 @@ import com.ochiamalu.subject.infra.basic.service.SubjectLabelService;
 import com.ochiamalu.subject.infra.basic.service.SubjectMappingService;
 import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,7 +38,7 @@ public class SubjectCategoryDomainServiceImpl implements SubjectCategoryDomainSe
     private SubjectLabelService subjectLabelService;
 
     @Resource
-    private ThreadPoolTaskExecutor labelThreadPool;
+    private ThreadPoolExecutor labelThreadPool;
 
     @Resource
     private CacheUtil<SubjectCategoryBO> cacheUtil;
