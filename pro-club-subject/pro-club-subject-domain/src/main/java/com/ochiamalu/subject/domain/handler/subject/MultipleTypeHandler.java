@@ -1,6 +1,6 @@
 package com.ochiamalu.subject.domain.handler.subject;
 
-import com.ochiamalu.subject.common.enums.SubjectInfoTypreEnum;
+import com.ochiamalu.subject.common.enums.SubjectInfoTypeEnum;
 import com.ochiamalu.subject.domain.convert.MultipleSubjectConverter;
 import com.ochiamalu.subject.domain.entity.SubjectAnswerBO;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
@@ -26,8 +26,8 @@ public class MultipleTypeHandler implements SubjectTypeHandler{
     private SubjectMultipleService subjectMultipleService;
 
     @Override
-    public SubjectInfoTypreEnum getHandlerType() {
-        return SubjectInfoTypreEnum.MULTIPLE;
+    public SubjectInfoTypeEnum getHandlerType() {
+        return SubjectInfoTypeEnum.MULTIPLE;
     }
 
     @Override

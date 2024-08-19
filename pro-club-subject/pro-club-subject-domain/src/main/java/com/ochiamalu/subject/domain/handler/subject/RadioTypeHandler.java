@@ -1,6 +1,6 @@
 package com.ochiamalu.subject.domain.handler.subject;
 
-import com.ochiamalu.subject.common.enums.SubjectInfoTypreEnum;
+import com.ochiamalu.subject.common.enums.SubjectInfoTypeEnum;
 import com.ochiamalu.subject.domain.convert.RadioSubjectConverter;
 import com.ochiamalu.subject.domain.entity.SubjectAnswerBO;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
@@ -26,8 +26,8 @@ public class RadioTypeHandler implements SubjectTypeHandler {
     private SubjectRadioService subjectRadioService;
 
     @Override
-    public SubjectInfoTypreEnum getHandlerType() {
-        return SubjectInfoTypreEnum.RADIO;
+    public SubjectInfoTypeEnum getHandlerType() {
+        return SubjectInfoTypeEnum.RADIO;
     }
 
     @Override

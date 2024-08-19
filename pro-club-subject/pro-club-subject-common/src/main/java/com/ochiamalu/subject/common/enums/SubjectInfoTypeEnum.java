@@ -3,7 +3,7 @@ package com.ochiamalu.subject.common.enums;
 import lombok.Getter;
 
 @Getter
-public enum SubjectInfoTypreEnum {
+public enum SubjectInfoTypeEnum {
 
     RADIO(1, "单选"),
 
@@ -17,13 +17,13 @@ public enum SubjectInfoTypreEnum {
 
     private final String desc;
 
-    SubjectInfoTypreEnum(int code, String desc) {
+    SubjectInfoTypeEnum(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
 
-    public static SubjectInfoTypreEnum getResultCodeEnum(int code) {
-        for (SubjectInfoTypreEnum resultCodeEnum : SubjectInfoTypreEnum.values()) {
+    public static SubjectInfoTypeEnum getResultCodeEnum(int code) {
+        for (SubjectInfoTypeEnum resultCodeEnum : SubjectInfoTypeEnum.values()) {
             if (resultCodeEnum.getCode() == code) {
                 return resultCodeEnum;
             }

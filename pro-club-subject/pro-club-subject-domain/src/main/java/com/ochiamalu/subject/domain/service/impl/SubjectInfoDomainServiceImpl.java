@@ -1,6 +1,7 @@
 package com.ochiamalu.subject.domain.service.impl;
 
 import com.ochiamalu.subject.common.entity.PageResult;
+import com.ochiamalu.subject.common.utils.IdWorkerUtil;
 import com.ochiamalu.subject.domain.convert.SubjectInfoConverter;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
 import com.ochiamalu.subject.domain.entity.SubjectOptionBO;
@@ -8,8 +9,10 @@ import com.ochiamalu.subject.domain.handler.subject.SubjectTypeHandler;
 import com.ochiamalu.subject.domain.handler.subject.SubjectTypeHandlerFactory;
 import com.ochiamalu.subject.domain.service.SubjectInfoDomainService;
 import com.ochiamalu.subject.infra.basic.entity.SubjectInfo;
+import com.ochiamalu.subject.infra.basic.entity.SubjectInfoEs;
 import com.ochiamalu.subject.infra.basic.entity.SubjectLabel;
 import com.ochiamalu.subject.infra.basic.entity.SubjectMapping;
+import com.ochiamalu.subject.infra.basic.service.SubjectEsService;
 import com.ochiamalu.subject.infra.basic.service.SubjectInfoService;
 import com.ochiamalu.subject.infra.basic.service.SubjectLabelService;
 import com.ochiamalu.subject.infra.basic.service.SubjectMappingService;
@@ -19,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +47,9 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
     @Resource
     private SubjectMappingService subjectMappingService;
 
+    @Resource
+    private SubjectEsService subjectEsService;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void add(SubjectInfoBO subjectInfoBO) {
@@ -56,6 +63,11 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
 
         ArrayList<SubjectMapping> subjectMappingList = getSubjectMappingList(subjectInfoBO);
         subjectMappingService.saveBatch(subjectMappingList);
+
+        //同步到es
+        SubjectInfoEs subjectInfoEs = getSubjectInfoEs(subjectInfoBO, subjectInfo);
+        subjectEsService.addSubject(subjectInfoEs);
+
     }
 
     @Override
@@ -94,6 +106,15 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
         return bo;
     }
 
+    @Override
+    public PageResult<SubjectInfoEs> searchSubjects(SubjectInfoBO subjectInfoBO) {
+        SubjectInfoEs subjectInfoEs = new SubjectInfoEs();
+        subjectInfoEs.setPageNo(subjectInfoBO.getPageNo());
+        subjectInfoEs.setPageSize(subjectInfoBO.getPageSize());
+        subjectInfoEs.setKeyWord(subjectInfoBO.getKeyword());
+        return subjectEsService.searchSubjects(subjectInfoEs);
+    }
+
     private void getLabelName(SubjectInfoBO bo, List<SubjectMapping> mappingList) {
         List<Long> labelIdList = mappingList.stream().map(SubjectMapping::getLabelId).collect(Collectors.toList());
         List<SubjectLabel> labelList = subjectLabelService.batchQueryById(labelIdList);
@@ -115,5 +136,17 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
             });
         });
         return subjectMappingList;
+    }
+
+    private static @NotNull SubjectInfoEs getSubjectInfoEs(SubjectInfoBO subjectInfoBO, SubjectInfo subjectInfo) {
+        SubjectInfoEs subjectInfoEs = new SubjectInfoEs();
+        subjectInfoEs.setDocId(new IdWorkerUtil(1, 1, 1).nextId());
+        subjectInfoEs.setSubjectId(subjectInfo.getId());
+        subjectInfoEs.setSubjectType(subjectInfo.getSubjectType());
+        subjectInfoEs.setSubjectName(subjectInfo.getSubjectName());
+        subjectInfoEs.setSubjectAnswer(subjectInfoBO.getSubjectAnswer());
+        subjectInfoEs.setCreateTime(new Date().getTime());
+        subjectInfoEs.setCreateUser("ochiamalu");
+        return subjectInfoEs;
     }
 }

@@ -1,6 +1,6 @@
 package com.ochiamalu.subject.application.interceptor;
 
-import com.ochiamalu.subject.application.context.LoginContextHolder;
+import com.ochiamalu.subject.common.context.LoginContextHolder;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

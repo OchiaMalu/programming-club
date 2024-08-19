@@ -1,6 +1,6 @@
 package com.ochiamalu.subject.domain.handler.subject;
 
-import com.ochiamalu.subject.common.enums.SubjectInfoTypreEnum;
+import com.ochiamalu.subject.common.enums.SubjectInfoTypeEnum;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
@@ -21,11 +21,11 @@ public class SubjectTypeHandlerFactory implements InitializingBean {
     @Resource
     private List<SubjectTypeHandler> subjectTypeHandlerList;
 
-    private Map<SubjectInfoTypreEnum, SubjectTypeHandler> subjectTypeHandlerMap = new HashMap<>();
+    private Map<SubjectInfoTypeEnum, SubjectTypeHandler> subjectTypeHandlerMap = new HashMap<>();
 
     public SubjectTypeHandler getSubjectTypeHandler(int subjectType) {
-        SubjectInfoTypreEnum subjectInfoTypreEnum = SubjectInfoTypreEnum.getResultCodeEnum(subjectType);
-        return subjectTypeHandlerMap.get(subjectInfoTypreEnum);
+        SubjectInfoTypeEnum subjectInfoTypeEnum = SubjectInfoTypeEnum.getResultCodeEnum(subjectType);
+        return subjectTypeHandlerMap.get(subjectInfoTypeEnum);
     }
 
     @Override

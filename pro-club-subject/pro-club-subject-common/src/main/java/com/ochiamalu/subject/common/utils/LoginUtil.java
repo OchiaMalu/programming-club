@@ -1,6 +1,6 @@
-package com.ochiamalu.subject.application.utils;
+package com.ochiamalu.subject.common.utils;
 
-import com.ochiamalu.subject.application.context.LoginContextHolder;
+import com.ochiamalu.subject.common.context.LoginContextHolder;
 
 /**
  * 登录util

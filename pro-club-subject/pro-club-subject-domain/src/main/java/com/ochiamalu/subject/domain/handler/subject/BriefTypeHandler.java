@@ -1,6 +1,6 @@
 package com.ochiamalu.subject.domain.handler.subject;
 
-import com.ochiamalu.subject.common.enums.SubjectInfoTypreEnum;
+import com.ochiamalu.subject.common.enums.SubjectInfoTypeEnum;
 import com.ochiamalu.subject.domain.convert.BriefSubjectConverter;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
 import com.ochiamalu.subject.domain.entity.SubjectOptionBO;
@@ -23,8 +23,8 @@ public class BriefTypeHandler implements SubjectTypeHandler {
     private SubjectBriefService subjectBriefService;
 
     @Override
-    public SubjectInfoTypreEnum getHandlerType() {
-        return SubjectInfoTypreEnum.BRIEF;
+    public SubjectInfoTypeEnum getHandlerType() {
+        return SubjectInfoTypeEnum.BRIEF;
     }
 
     @Override

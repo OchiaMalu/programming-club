@@ -1,6 +1,6 @@
 package com.ochiamalu.subject.domain.handler.subject;
 
-import com.ochiamalu.subject.common.enums.SubjectInfoTypreEnum;
+import com.ochiamalu.subject.common.enums.SubjectInfoTypeEnum;
 import com.ochiamalu.subject.domain.convert.JudgeSubjectConverter;
 import com.ochiamalu.subject.domain.entity.SubjectAnswerBO;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
@@ -25,8 +25,8 @@ public class JudgeTypeHandler implements SubjectTypeHandler{
     private SubjectJudgeService subjectJudgeService;
 
     @Override
-    public SubjectInfoTypreEnum getHandlerType() {
-        return SubjectInfoTypreEnum.JUDGE;
+    public SubjectInfoTypeEnum getHandlerType() {
+        return SubjectInfoTypeEnum.JUDGE;
     }
 
     @Override

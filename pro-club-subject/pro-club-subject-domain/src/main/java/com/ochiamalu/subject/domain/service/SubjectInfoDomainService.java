@@ -2,6 +2,7 @@ package com.ochiamalu.subject.domain.service;
 
 import com.ochiamalu.subject.common.entity.PageResult;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
+import com.ochiamalu.subject.infra.basic.entity.SubjectInfoEs;
 
 public interface SubjectInfoDomainService {
 
@@ -19,4 +20,6 @@ public interface SubjectInfoDomainService {
      * 查询题目详情
      */
     SubjectInfoBO querySubjectInfo(SubjectInfoBO subjectInfoBO);
+
+    PageResult<SubjectInfoEs> searchSubjects(SubjectInfoBO subjectInfoBO);
 }

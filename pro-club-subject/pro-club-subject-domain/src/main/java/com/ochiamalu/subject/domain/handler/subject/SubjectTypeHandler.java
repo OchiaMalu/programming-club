@@ -1,6 +1,6 @@
 package com.ochiamalu.subject.domain.handler.subject;
 
-import com.ochiamalu.subject.common.enums.SubjectInfoTypreEnum;
+import com.ochiamalu.subject.common.enums.SubjectInfoTypeEnum;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
 import com.ochiamalu.subject.domain.entity.SubjectOptionBO;
 
@@ -9,7 +9,7 @@ public interface SubjectTypeHandler {
     /**
      * 枚举识别
      */
-    SubjectInfoTypreEnum getHandlerType();
+    SubjectInfoTypeEnum getHandlerType();
 
     /**
      * 题目插入

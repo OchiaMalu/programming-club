@@ -8,6 +8,9 @@ import com.ochiamalu.subject.common.entity.Result;
 import com.ochiamalu.subject.domain.entity.SubjectAnswerBO;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
 import com.ochiamalu.subject.domain.service.SubjectInfoDomainService;
+import com.ochiamalu.subject.infra.basic.entity.SubjectInfoEs;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +30,7 @@ import java.util.List;
 @RequestMapping("/subject")
 public class SubjectController {
 
+    private static final Logger log = LoggerFactory.getLogger(SubjectController.class);
     @Resource
     private SubjectInfoDomainService subjectInfoDomainService;
 
@@ -62,5 +66,12 @@ public class SubjectController {
         SubjectInfoBO boResult = subjectInfoDomainService.querySubjectInfo(subjectInfoBO);
         SubjectInfoDTO dto = SubjectInfoDTOConverter.INSTANCE.convertBO2DTO(boResult);
         return Result.ok(dto);
+    }
+
+    @PostMapping("/search")
+    public Result<PageResult<SubjectInfoEs>> searchSubject(@RequestBody SubjectInfoDTO subjectInfoDTO) {
+        SubjectInfoBO subjectInfoBO = SubjectInfoDTOConverter.INSTANCE.convertDTO2BO(subjectInfoDTO);
+        PageResult<SubjectInfoEs> pageResult = subjectInfoDomainService.searchSubjects(subjectInfoBO);
+        return Result.ok(pageResult);
     }
 }

@@ -1,4 +1,4 @@
-package com.ochiamalu.subject.application.context;
+package com.ochiamalu.subject.common.context;
 
 import java.util.Map;
 import java.util.Objects;
