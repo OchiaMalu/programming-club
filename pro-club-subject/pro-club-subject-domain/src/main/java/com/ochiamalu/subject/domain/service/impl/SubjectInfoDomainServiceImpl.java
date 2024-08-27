@@ -16,6 +16,7 @@ import com.ochiamalu.subject.infra.basic.entity.SubjectMapping;
 import com.ochiamalu.subject.infra.basic.service.SubjectEsService;
 import com.ochiamalu.subject.infra.basic.service.SubjectInfoService;
 import com.ochiamalu.subject.infra.basic.service.SubjectLabelService;
+import com.ochiamalu.subject.infra.basic.service.SubjectLikedService;
 import com.ochiamalu.subject.infra.basic.service.SubjectMappingService;
 import com.ochiamalu.subject.infra.entity.UserInfo;
 import com.ochiamalu.subject.infra.rpc.UserRPC;
@@ -56,6 +57,9 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
 
     @Resource
     private SubjectMappingService subjectMappingService;
+
+    @Resource
+    private SubjectLikedService subjectLikedService;
 
     @Resource
     private SubjectEsService subjectEsService;
@@ -121,6 +125,13 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
         SubjectInfoBO bo = SubjectInfoConverter.INSTANCE.convertOptionAndInfoToBo(optionBO, subjectInfo);
         List<SubjectMapping> mappingList = subjectMappingService.queryBySubjectId(subjectInfo.getId());
         getLabelName(bo, mappingList);
+
+        Boolean liked = subjectLikedService.isLiked(subjectInfoBO.getId(), LoginUtil.getLoginId());
+        bo.setLiked(liked);
+
+        Integer likedCount = subjectLikedService.likedCount(subjectInfoBO.getId());
+        bo.setLikedCount(likedCount);
+
         return bo;
     }
 

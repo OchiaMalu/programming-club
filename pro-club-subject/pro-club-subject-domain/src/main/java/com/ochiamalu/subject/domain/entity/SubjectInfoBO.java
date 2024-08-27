@@ -87,4 +87,8 @@ public class SubjectInfoBO extends PageInfo implements Serializable {
     private String createUser;
 
     private String createUserAvatar;
+
+    private Boolean liked;
+
+    private Integer likedCount;
 }
