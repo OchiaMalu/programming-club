@@ -81,4 +81,10 @@ public class SubjectInfoBO extends PageInfo implements Serializable {
     private List<String> labelName;
 
     private String keyword;
+
+    private Integer subjectCount;
+
+    private String createUser;
+
+    private String createUserAvatar;
 }

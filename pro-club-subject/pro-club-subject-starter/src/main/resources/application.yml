@@ -27,6 +27,10 @@ spring:
         config:
           enabled: true
       connection-properties: config.decrypt=true;config.decrypt.key=${publicKey};
+  redis:
+    database: 1
+    host: localhost
+    port: 6379
 publicKey: MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAJIPyPcvOGakebMIkOfQCmO9Idms4ta5Y7ZmU5NEpGKj/Lpxaqv6UNGceXOzkX7/KtUyA9E+EttJAMkkRO6yLfUCAwEAAQ==
 es:
   cluster:

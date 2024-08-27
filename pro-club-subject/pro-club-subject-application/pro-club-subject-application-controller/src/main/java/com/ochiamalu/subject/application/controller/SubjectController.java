@@ -74,4 +74,12 @@ public class SubjectController {
         PageResult<SubjectInfoEs> pageResult = subjectInfoDomainService.searchSubjects(subjectInfoBO);
         return Result.ok(pageResult);
     }
+
+    @GetMapping("/getContributeList")
+    public Result<List<SubjectInfoDTO>> getContributeList() {
+        List<SubjectInfoBO> subjectInfoBOList = subjectInfoDomainService.getContributeList();
+        List<SubjectInfoDTO> subjectInfoDTOList = SubjectInfoDTOConverter.INSTANCE
+                .convertBOList2DTO(subjectInfoBOList);
+        return Result.ok(subjectInfoDTOList);
+    }
 }

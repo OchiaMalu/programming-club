@@ -4,6 +4,8 @@ import com.ochiamalu.subject.common.entity.PageResult;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
 import com.ochiamalu.subject.infra.basic.entity.SubjectInfoEs;
 
+import java.util.List;
+
 public interface SubjectInfoDomainService {
 
     /**
@@ -22,4 +24,6 @@ public interface SubjectInfoDomainService {
     SubjectInfoBO querySubjectInfo(SubjectInfoBO subjectInfoBO);
 
     PageResult<SubjectInfoEs> searchSubjects(SubjectInfoBO subjectInfoBO);
+
+    List<SubjectInfoBO> getContributeList();
 }

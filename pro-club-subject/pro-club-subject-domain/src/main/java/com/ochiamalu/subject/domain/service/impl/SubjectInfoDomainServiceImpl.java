@@ -2,6 +2,7 @@ package com.ochiamalu.subject.domain.service.impl;
 
 import com.ochiamalu.subject.common.entity.PageResult;
 import com.ochiamalu.subject.common.utils.IdWorkerUtil;
+import com.ochiamalu.subject.common.utils.LoginUtil;
 import com.ochiamalu.subject.domain.convert.SubjectInfoConverter;
 import com.ochiamalu.subject.domain.entity.SubjectInfoBO;
 import com.ochiamalu.subject.domain.entity.SubjectOptionBO;
@@ -16,14 +17,23 @@ import com.ochiamalu.subject.infra.basic.service.SubjectEsService;
 import com.ochiamalu.subject.infra.basic.service.SubjectInfoService;
 import com.ochiamalu.subject.infra.basic.service.SubjectLabelService;
 import com.ochiamalu.subject.infra.basic.service.SubjectMappingService;
+import com.ochiamalu.subject.infra.entity.UserInfo;
+import com.ochiamalu.subject.infra.rpc.UserRPC;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -50,6 +60,12 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
     @Resource
     private SubjectEsService subjectEsService;
 
+    @Resource
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Resource
+    private UserRPC userRPC;
+
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void add(SubjectInfoBO subjectInfoBO) {
@@ -68,6 +84,8 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
         SubjectInfoEs subjectInfoEs = getSubjectInfoEs(subjectInfoBO, subjectInfo);
         subjectEsService.addSubject(subjectInfoEs);
 
+        //放入zset计入排行榜
+        stringRedisTemplate.opsForZSet().incrementScore("subject:rank", LoginUtil.getLoginId(), 1);
     }
 
     @Override
@@ -113,6 +131,25 @@ public class SubjectInfoDomainServiceImpl implements SubjectInfoDomainService {
         subjectInfoEs.setPageSize(subjectInfoBO.getPageSize());
         subjectInfoEs.setKeyWord(subjectInfoBO.getKeyword());
         return subjectEsService.searchSubjects(subjectInfoEs);
+    }
+
+    @Override
+    public List<SubjectInfoBO> getContributeList() {
+        Set<ZSetOperations.TypedTuple<String>> typedTuples = stringRedisTemplate
+                .opsForZSet().rangeByScoreWithScores("subject:rank", 0, 5);
+        if (CollectionUtils.isEmpty(typedTuples)) {
+            return Collections.emptyList();
+        }
+        LinkedList<SubjectInfoBO> subjectInfoBOS = new LinkedList<>();
+        typedTuples.forEach((rank) -> {
+            SubjectInfoBO subjectInfoBO = new SubjectInfoBO();
+            subjectInfoBO.setSubjectCount(Objects.requireNonNull(rank.getScore()).intValue());
+            UserInfo userInfo = userRPC.getUserInfo(rank.getValue());
+            subjectInfoBO.setCreateUser(userInfo.getNickName());
+            subjectInfoBO.setCreateUserAvatar(userInfo.getAvatar());
+            subjectInfoBOS.add(subjectInfoBO);
+        });
+        return subjectInfoBOS;
     }
 
     private void getLabelName(SubjectInfoBO bo, List<SubjectMapping> mappingList) {
