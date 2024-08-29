@@ -30,6 +30,11 @@ public class SubjectInfoServiceImpl extends ServiceImpl<SubjectInfoMapper, Subje
     public List<SubjectInfo> queryPage(SubjectInfo subjectInfo, Long categoryId, Long labelId, int start, Integer pageSize) {
         return this.subjectInfoMapper.queryPage(subjectInfo, categoryId, labelId, start, pageSize);
     }
+
+    @Override
+    public Long querySubjectIdCursor(Long subjectId, Long categoryId, Long labelId, int cursor) {
+        return this.subjectInfoMapper.querySubjectIdCursor(subjectId, categoryId, labelId, cursor);
+    }
 }
 
 
