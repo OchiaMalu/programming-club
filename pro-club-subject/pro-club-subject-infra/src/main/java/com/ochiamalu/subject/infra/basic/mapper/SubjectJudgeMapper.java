@@ -9,7 +9,7 @@ import java.util.List;
 * @author OchiaMalu
 * @description 针对表【subject_judge(判断题)】的数据库操作Mapper
 * @createDate 2024-08-09 18:34:05
-* @Entity .entity.SubjectJudge
+* @Entity .common.SubjectJudge
 */
 public interface SubjectJudgeMapper extends BaseMapper<SubjectJudge> {
 

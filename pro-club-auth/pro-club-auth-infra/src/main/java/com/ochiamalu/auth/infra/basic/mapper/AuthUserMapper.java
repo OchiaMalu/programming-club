@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 * @author OchiaMalu
 * @description 针对表【auth_user(用户信息表)】的数据库操作Mapper
 * @createDate 2024-08-13 15:43:17
-* @Entity .entity.AuthUser
+* @Entity .common.AuthUser
 */
 @Mapper
 public interface AuthUserMapper extends BaseMapper<AuthUser> {

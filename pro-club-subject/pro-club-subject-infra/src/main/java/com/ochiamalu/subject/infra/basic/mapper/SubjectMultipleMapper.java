@@ -9,7 +9,7 @@ import java.util.List;
 * @author OchiaMalu
 * @description 针对表【subject_multiple(多选题信息表)】的数据库操作Mapper
 * @createDate 2024-08-09 18:34:49
-* @Entity .entity.SubjectMultiple
+* @Entity .common.SubjectMultiple
 */
 public interface SubjectMultipleMapper extends BaseMapper<SubjectMultiple> {
 

@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 @RefreshScope
 public class StorageConfig {
 
-    @Value("${storage.service.type}")
+    @Value("${storage.server.type}")
     private String storageType;
 
     @Bean

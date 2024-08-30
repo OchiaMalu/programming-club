@@ -7,7 +7,7 @@ import com.ochiamalu.subject.infra.basic.entity.SubjectCategory;
 * @author OchiaMalu
 * @description 针对表【subject_category(题目分类)】的数据库操作Mapper
 * @createDate 2024-08-06 17:46:04
-* @Entity com.ochiamalu.subject.infra.basic.entity.SubjectCategory
+* @Entity com.ochiamalu.subject.infra.basic.common.SubjectCategory
 */
 public interface SubjectCategoryMapper extends BaseMapper<SubjectCategory> {
 
